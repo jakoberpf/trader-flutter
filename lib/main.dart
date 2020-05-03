@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'login/auth_service.dart';
 import 'login/pages/login.page.dart';
-import 'navigation_home_screen.dart';
+import 'home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,8 +19,7 @@ void main() async {
             return AuthService();
           },
         ),
-      )
-  );
+      ));
 }
 
 class Traderin extends StatelessWidget {
@@ -43,7 +42,6 @@ class Traderin extends StatelessWidget {
         textTheme: AppTheme.textTheme,
         platform: TargetPlatform.iOS,
       ),
-//      home: NavigationHomeScreen(),
       home: FutureBuilder(
         // get the Provider, and call the getUser method
         future: Provider.of<AuthService>(context).getUser(),
@@ -51,9 +49,10 @@ class Traderin extends StatelessWidget {
         // widget for HomePage or LoginPage
         builder: (context, AsyncSnapshot snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            return snapshot.hasData ? NavigationHomeScreen() : LoginPage();
+            return snapshot.hasData ? HomePage() : LoginPage();
           } else {
-            return Container(color: Colors.white);
+            // show loading indicator
+            return LoadingCircle();
           }
         },
       ),
