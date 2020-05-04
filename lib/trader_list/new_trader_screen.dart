@@ -1,9 +1,8 @@
-import 'package:best_flutter_ui_templates/fitness_app/ui_view/area_list_view.dart';
-import 'package:best_flutter_ui_templates/fitness_app/ui_view/running_view.dart';
-import 'package:best_flutter_ui_templates/fitness_app/ui_view/title_view.dart';
-import 'package:best_flutter_ui_templates/fitness_app/ui_view/workout_view.dart';
 import 'package:best_flutter_ui_templates/trader_list/hotel_app_theme.dart';
+import 'package:best_flutter_ui_templates/trader_list/widget/text_input_form.dart';
 import 'package:flutter/material.dart';
+
+import 'add_trader_form.dart';
 
 class AddTraderScreen extends StatefulWidget {
   const AddTraderScreen({Key key, this.animationController}) : super(key: key);
@@ -58,47 +57,20 @@ class _AddTraderScreenState extends State<AddTraderScreen>
   void addAllListData() {
     const int count = 5;
 
-    listViews.add(
-      WorkoutView(
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController,
-            curve:
-                Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController,
-      ),
-    );
-    listViews.add(
-      RunningView(
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController,
-            curve:
-                Interval((1 / count) * 3, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController,
-      ),
-    );
+//    listViews.add(
+//      TextInputView(
+//        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+//            parent: widget.animationController,
+//            curve:
+//                Interval((1 / count) * 3, 1.0, curve: Curves.fastOutSlowIn))),
+//        animationController: widget.animationController,
+//      ),
+//    );
 
     listViews.add(
-      TitleView(
-        titleTxt: 'Area of focus',
-        subTxt: 'more',
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController,
-            curve:
-                Interval((1 / count) * 4, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController,
-      ),
+      AddTraderForm(widget.animationController),
     );
 
-    listViews.add(
-      AreaListView(
-        mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
-            CurvedAnimation(
-                parent: widget.animationController,
-                curve: Interval((1 / count) * 5, 1.0,
-                    curve: Curves.fastOutSlowIn))),
-        mainScreenAnimationController: widget.animationController,
-      ),
-    );
   }
 
   Future<bool> getData() async {
@@ -126,6 +98,7 @@ class _AddTraderScreenState extends State<AddTraderScreen>
   }
 
   Widget getMainListViewUI() {
+//    return AddTraderForm(widget.animationController);
     return FutureBuilder<bool>(
       future: getData(),
       builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {

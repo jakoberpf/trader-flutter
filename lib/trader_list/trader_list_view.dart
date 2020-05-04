@@ -5,8 +5,8 @@ import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 import 'model/hotel_list_data.dart';
 
-class HotelListView extends StatelessWidget {
-  const HotelListView(
+class TraderListView extends StatelessWidget {
+  const TraderListView(
       {Key key,
       this.hotelData,
       this.animationController,

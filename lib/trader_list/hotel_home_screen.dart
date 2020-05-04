@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:best_flutter_ui_templates/fitness_app/traning/training_screen.dart';
-import 'package:best_flutter_ui_templates/trader_list/hotel_list_view.dart';
+import 'package:best_flutter_ui_templates/trader_list/trader_list_view.dart';
 import 'package:best_flutter_ui_templates/trader_list/model/hotel_list_data.dart';
 import 'package:best_flutter_ui_templates/trader_list/new_trader_screen.dart';
 import 'package:best_flutter_ui_templates/trader_list/trader_list_bar_bottom.dart';
@@ -105,7 +105,7 @@ class _TraderListScreenState extends State<TraderListScreen>
                                               (1 / count) * index, 1.0,
                                               curve: Curves.fastOutSlowIn)));
                               animationController.forward();
-                              return HotelListView(
+                              return TraderListView(
                                 callback: () {},
                                 hotelData: hotelList[index],
                                 animation: animation,
@@ -162,7 +162,7 @@ class _TraderListScreenState extends State<TraderListScreen>
                                       curve: Curves.fastOutSlowIn)));
                       animationController.forward();
 
-                      return HotelListView(
+                      return TraderListView(
                         callback: () {},
                         hotelData: hotelList[index],
                         animation: animation,
@@ -191,7 +191,7 @@ class _TraderListScreenState extends State<TraderListScreen>
         ),
       );
       hotelListViews.add(
-        HotelListView(
+        TraderListView(
           callback: () {},
           hotelData: hotelList[i],
           animation: animation,
