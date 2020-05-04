@@ -3,7 +3,6 @@ import 'package:best_flutter_ui_templates/custom_drawer/drawer_user_controller.d
 import 'package:best_flutter_ui_templates/custom_drawer/home_drawer.dart';
 import 'package:best_flutter_ui_templates/feedback_screen.dart';
 import 'package:best_flutter_ui_templates/help_screen.dart';
-import 'package:best_flutter_ui_templates/invite_friend_screen.dart';
 import 'package:best_flutter_ui_templates/login/pages/login.page.dart';
 import 'package:best_flutter_ui_templates/trader_list/hotel_home_screen.dart';
 import 'package:flutter/material.dart';
@@ -62,17 +61,9 @@ class _HomePageState extends State<HomePage> {
         setState(() {
           screenView = LoginPage();
         });
-      } else if (drawerIndex == DrawerIndex.Help) { // TODO Implement TraderHelp Infos
-        setState(() {
-          screenView = HelpScreen();
-        });
       } else if (drawerIndex == DrawerIndex.FeedBack) { // TODO Remove
         setState(() {
           screenView = FeedbackScreen();
-        });
-      } else if (drawerIndex == DrawerIndex.Invite) { // TODO Specify who can invite (Moderators)
-        setState(() {
-          screenView = InviteFriend();
         });
       } else if (drawerIndex == DrawerIndex.Theme1) { // TODO Remove
         setState(() {

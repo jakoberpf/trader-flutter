@@ -1,4 +1,4 @@
-class TokenResponse {
+class LoginResponse {
   final String id;
   final String username;
   final String email;
@@ -6,10 +6,10 @@ class TokenResponse {
   final String accessToken;
   final String tokenType;
 
-  TokenResponse(this.id, this.username, this.email, this.roles,
+  LoginResponse(this.id, this.username, this.email, this.roles,
       this.accessToken, this.tokenType);
 
-  TokenResponse.fromJson(Map<String, dynamic> json)
+  LoginResponse.fromJson(Map<String, dynamic> json)
       : id = json["id"],
         username = json['username'],
         email = json['email'],

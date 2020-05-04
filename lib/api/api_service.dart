@@ -1,29 +1,35 @@
 import 'dart:convert';
 
-import 'package:best_flutter_ui_templates/api/api.client.dart';
-import 'package:best_flutter_ui_templates/api/model/login_request.dart';
+import 'package:best_flutter_ui_templates/api/api_client.dart';
+import 'package:best_flutter_ui_templates/api/model/auth/login_request.dart';
 import 'package:http/http.dart';
 
-import 'api.exceptions.dart';
-import 'model/token_response.dart';
+import 'api_exceptions.dart';
+import 'model/auth/login_response.dart';
 
 class ApiService {
-  ApiClient _apiClientImpl;
+  ApiClient _apiClient;
+  String _apiToken;
 
   ApiService() {
-    _apiClientImpl = ApiClient("http://localhost/api");
+    _apiClient = ApiClient("http://localhost/api");
   }
 
-  Future<TokenResponse> authenticateUser(
+  setAuthentication(String token) {
+    _apiToken = token;
+    print("Authentication: " + token);
+  }
+
+  Future<LoginResponse> authenticateUser(
       String username, String password) async {
     LoginRequest loginRequest = new LoginRequest(username, password);
-    Response response = await _apiClientImpl.authenticateUser(loginRequest);
+    Response response = await _apiClient.authenticateUser(loginRequest);
     if (_getException(response) != null) {
       return Future.error(_getException(response));
     } else {
-      TokenResponse tokenResponse;
+      LoginResponse tokenResponse;
       print(jsonDecode(response.body));
-      tokenResponse = TokenResponse.fromJson(jsonDecode(response.body));
+      tokenResponse = LoginResponse.fromJson(jsonDecode(response.body));
       return Future.value(tokenResponse);
     }
   }
